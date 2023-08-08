@@ -1,0 +1,18 @@
+#Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  pgdb:
+    image: postgres:15.3-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+
+volumes:
+  pgdb-data:
+    driver: local
