@@ -6,12 +6,16 @@ services:
       - elastic
     ports:
       - 9200:9200 
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
     mem_limit: 1GB
     environment:
       - ELASTIC_PASSWORD=admin
   kibana:
     image: docker.elastic.co/kibana/kibana:8.14.2
     container_name: kibana
+    volumes:
+      - kibanadata:/usr/share/kibana/data
     networks:
       - elastic
     ports:
@@ -19,6 +23,11 @@ services:
     depends_on:
       - es
     mem_limit: 1GB
+volumes:
+  esdata:
+    driver: local
+  kibanadata:
+    driver: local
 networks:
   elastic:
     driver: bridge
