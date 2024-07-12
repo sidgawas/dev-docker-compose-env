@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
   mongodb:
-    image: mongo:6.0.14
+    image: mongo:7-jammy
     volumes:
       - mongodb-data:/data/db
     ports:

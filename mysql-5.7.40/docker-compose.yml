@@ -1,17 +1,13 @@
 # Use root/example as user/password credentials
 version: '3.1'
-
+name: mysql
 services:
-
   db:
     image: mysql:5.7.40
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password --server_id=1 --log-bin=db-bin
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - ./data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: caplever
-  
-volumes:
-  db_data:
