@@ -8,6 +8,7 @@ services:
       - 9200:9200 
     volumes:
       - esdata:/usr/share/elasticsearch/data
+      - ~/config/elk/:/usr/share/elasticsearch/config
     mem_limit: 1GB
     environment:
       - ELASTIC_PASSWORD=admin
@@ -16,6 +17,7 @@ services:
     container_name: kibana
     volumes:
       - kibanadata:/usr/share/kibana/data
+      - ~/config/elk/:/usr/share/kibana/config
     networks:
       - elastic
     ports:
