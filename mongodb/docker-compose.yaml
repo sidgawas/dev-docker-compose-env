@@ -3,14 +3,11 @@ version: '3.1'
 
 services:
   mongodb:
-    image: mongo:7-jammy
+    image: mongo:7.0.12-nanoserver
     volumes:
-      - mongodb-data:/data/db
+      - ./data:/data/db
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-      MONGO_INITDB_ROOT_PASSWORD: mongoadmin@123
-volumes:
-  mongodb-data:
-    driver: local
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
