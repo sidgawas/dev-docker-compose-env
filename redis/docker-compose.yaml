@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
   redis_cache:
-    image: redis:7.0.12-alpine
+    image: redis:7.2.5-alpine
     volumes:
       - redis-data:/data
     ports:
