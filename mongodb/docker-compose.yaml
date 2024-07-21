@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
   mongodb:
-    image: mongo:7.0.12-nanoserver
+    image: mongo:7.0.12
     volumes:
       - ./data:/data/db
     ports:
