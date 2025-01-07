@@ -1,0 +1,9 @@
+services:
+  wiremock:
+    container_name: wiremock
+    image: wiremock/wiremock:3.8.0
+    command: --verbose
+    volumes:
+      - ./data:/home/wiremock
+    ports:
+      - "8080:8080"
