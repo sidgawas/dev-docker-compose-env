@@ -1,0 +1,35 @@
+services:
+  agent:
+    # image: jenkins/inbound-agent
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    environment:
+      JENKINS_URL: http://jenkins-server:8080
+      JENKINS_AGENT_NAME: build-agent
+      JENKINS_SECRET: 87e4c1af8098f503938ee2aa576c28a358be4bec11f1d68ce3849af080825266
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+    networks:
+      - jenkins
+  agent-2:
+    # image: jenkins/inbound-agent
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    environment:
+      JENKINS_URL: http://jenkins-server:8080
+      JENKINS_AGENT_NAME: java-build
+      JENKINS_SECRET: f62c8286452611ae8983a090fe312b1f8fc41e0e34c77ffa8a13b92daefdda2b 
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+    networks:
+      - jenkins
+volumes:
+  jenkins-docker-certs:
+  jenkins-data:
+
+networks:
+  jenkins:
+    name: jenkins_default
+    external: true
