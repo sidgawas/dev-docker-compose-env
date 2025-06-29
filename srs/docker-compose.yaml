@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  srs:
+    image: ossrs/srs:5
+    ports:
+      - "1935:1935"
+      - "1985:1985"
+      - "8080:8080"
+      - "8000:8000/udp"
+      - "10080:10080/udp"
+    stdin_open: true # equivalent to -it (interactive)
+    tty: true        # equivalent to -it (interactive)
+    # Note: --rm is not directly supported in compose, but you can use 'docker compose run --rm' if needed
